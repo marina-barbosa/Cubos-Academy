@@ -4,7 +4,7 @@ tenho = 80.00
 custa = 129.99
 porcentagemQueTenho = (tenho * 100) / custa
 desconto = 100 - porcentagemQueTenho.toFixed(2)
-console.log(desconto + "%")
+console.log(desconto.toFixed(1) + "%")
 
 
 
