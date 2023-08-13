@@ -1,0 +1,10 @@
+function solucao(numero, limiteInferior, limiteSuperior) {
+    if (numero >= limiteInferior && numero <= limiteSuperior) {
+        return console.log("PERTENCE")
+    } else {
+        return console.log("NAO PERTENCE")
+    }
+}
+
+
+solucao(10, 5, 20)

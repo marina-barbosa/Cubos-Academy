@@ -1,0 +1,34 @@
+function solucao(min, km) {
+    //seu codigo aqui
+    let valor = 0
+    for (let m = 1; m <= min; m++) {
+        if (m <= 20) {
+            valor += 50
+        } else {
+            valor += 30
+        }
+    }
+    valor += (km * 70)
+    if (km > 10) {
+        km -= 10
+        valor -= (km * 20)
+    }
+    return console.log(valor)
+}
+
+
+solucao(25, 11.5) //1925
+
+/*
+1min     = 50c
+20min 	  = 30c
+ 1km a 10 = 70c
+11km a 20 = 50c
+
+
+20 * 50 1000
+5 * 30 150
+
+10 * 70 700
+1.5 * 50c 75
+*/
