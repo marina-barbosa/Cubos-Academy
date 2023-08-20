@@ -1,0 +1,33 @@
+
+
+ // CRIAR                           /////
+criar pasta 'projeto' /entrar
+criar pasta src / entrar
+criar pasta src/controladores
+criar bancodedados.js
+criar intermediarios.js
+criar index.js / sair da src
+criar .gitignore, add node_modules
+$ npm init -y
+$ npm install express
+$ npm install -D nodemon
+abrir package.json
+    "scripts": {
+    "mon": "nodemon ./src/index.js"
+    },
+abrir arquivo index.js
+´´const express = require('express');
+´´const app = express();
+´´app.get('/home', (requisicao, resposta) => {
+    resposta.send('Olá.. Esse é o meu primeiro servidor com o express');
+});
+´´app.listen(3000);
+
+ // RODAR                           /////
+$ npm run mon
+abrir navegador
+acessar http://localhost:3000/home
+
+
+
+

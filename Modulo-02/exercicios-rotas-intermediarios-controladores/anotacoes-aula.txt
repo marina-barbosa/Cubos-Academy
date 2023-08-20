@@ -1,0 +1,27 @@
+
+
+ // CRIAR                           /////
+criar pasta 'projeto' /entrar
+criar pasta src / entrar
+criar pasta src/controladores
+criar bancodedados.js
+criar intermediarios.js
+criar index.js / sair da src
+criar .gitignore, add node_modules
+$ npm init -y
+$ npm install express
+$ npm install -D nodemon
+abrir package.json
+    "scripts": {
+    "mon": "nodemon ./src/index.js"
+    },
+
+
+ // RODAR                           /////
+$ npm run mon
+abrir insomnia
+acessar http://localhost:3000/home
+
+
+
+
