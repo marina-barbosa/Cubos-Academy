@@ -1,0 +1,32 @@
+-- 1
+-- select count(medicamento) from farmacia
+-- 2
+-- select min(idade) from usuarios
+-- 3
+-- select max(idade) from usuarios
+-- 4
+-- select roound(avg(idade)) from usuarios where idade >= 18
+-- 5
+-- select sum(estoque) from farmacia where categoria ilike 'blue' or categoria ilike 'black'
+-- 6 ???
+-- ???
+-- 7
+-- select sum(estoque) from farmacia where categoria is null
+-- 8
+-- select count(medicamento) from farmacia where categoria is null
+-- 9
+-- select concat(medicamento, ' (',categoria,')' ) from farmacia where categoria is not null
+-- 10
+-- select concat(id, ' - ', medicamento, ' (',coalesce(categoria, 'sem categoria'),')') from farmacia
+-- 11 ???
+-- ???
+-- 12
+-- select nome, idade, email, age(cast(cadastro as timestamp)) from usuarios where idade < 18
+-- 13
+-- select nome, idade, email, age(cast(cadastro as date)) from usuarios where idade >= 60
+-- 14
+-- select categoria, count(estoque) from farmacia where categoria is not null group by categoria 
+-- 15
+-- select idade, count(id) from usuarios where idade >= 18 group by idade;
+-- 16
+-- select categoria, count(estoque) from farmacia group by categoria
