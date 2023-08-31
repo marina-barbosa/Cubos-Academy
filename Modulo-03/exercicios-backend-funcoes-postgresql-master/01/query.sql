@@ -8,8 +8,8 @@
 -- select roound(avg(idade)) from usuarios where idade >= 18
 -- 5
 -- select sum(estoque) from farmacia where categoria ilike 'blue' or categoria ilike 'black'
--- 6 ???
--- ???
+-- 6
+-- select categoria, sum(estoque) as quantidade_produto from farmacia where categoria is not null group by categoria
 -- 7
 -- select sum(estoque) from farmacia where categoria is null
 -- 8
@@ -18,8 +18,8 @@
 -- select concat(medicamento, ' (',categoria,')' ) from farmacia where categoria is not null
 -- 10
 -- select concat(id, ' - ', medicamento, ' (',coalesce(categoria, 'sem categoria'),')') from farmacia
--- 11 ???
--- ???
+-- 11
+-- select nome, idade, cast(cadastro as date) from usuarios where cadastro ilike '2020%'
 -- 12
 -- select nome, idade, email, age(cast(cadastro as timestamp)) from usuarios where idade < 18
 -- 13
