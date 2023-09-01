@@ -97,13 +97,7 @@ update produtos set quantidade_em_estoque = quantidade_em_estoque - 6 where id =
 update produtos set quantidade_em_estoque = quantidade_em_estoque - 1 where id = 15; 
 update produtos set quantidade_em_estoque = quantidade_em_estoque - 5 where id = 2;
 
--- Atualizar valor do pedido com base nos itens
-update pedidos set valor = (
-    select sum(p.preco * i.quantidade) 
-    from itens_do_pedido i
-    inner join produtos p on i.produto_id = p.id
-    where i.pedido_id = 2  -- Substitua pelo ID do pedido recém-inserido
-) where id = 2;  -- Substitua pelo ID do pedido recém-inserido
+
 
 
 
