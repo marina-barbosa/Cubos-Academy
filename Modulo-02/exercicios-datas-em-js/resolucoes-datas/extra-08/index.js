@@ -11,31 +11,31 @@ function funcaoB(data) {
 function funcaoC(data) {
     const optionsMonth = { month: 'short' };
 
-    return `${data.getDate()} ${data.toLocaleDateString('pt-BR', optionsMonth).substr(0, 3)}`;
+    return `${data.getDate()} ${data.toLocaleDateString('pt-BR', optionsMonth).substr(0,3)}`;
 }
 
 function funcaoD(data) {
     const optionsDate = { day: "2-digit" };
     const optionsMonth = { month: 'short' };
 
-    return `${data.toLocaleDateString('pt-BR', optionsDate)} ${data.toLocaleDateString('pt-BR', optionsMonth).substr(0, 3)} ${data.getFullYear()}`;
+    return `${data.toLocaleDateString('pt-BR', optionsDate)} ${data.toLocaleDateString('pt-BR', optionsMonth).substr(0,3)} ${data.getFullYear()}`;
 }
 
 function funcaoE(data) {
     const optionsDate = { day: "2-digit" };
     const optionsMonth = { month: 'short' };
 
-    return `${data.toLocaleDateString('pt-BR', optionsDate)} de ${data.toLocaleDateString('pt-BR', optionsMonth).substr(0, 3)} de ${data.getFullYear()}`;
+    return `${data.toLocaleDateString('pt-BR', optionsDate)} de ${data.toLocaleDateString('pt-BR', optionsMonth).substr(0,3)} de ${data.getFullYear()}`;
 }
 
 function funcaoF(data) {
     const optionsDate = { day: "2-digit" };
     const optionsMonth = { month: 'short' };
 
-    return `${data.toLocaleDateString('pt-BR', optionsDate)}/${data.toLocaleDateString('pt-BR', optionsMonth).substr(0, 3)}`;
+    return `${data.toLocaleDateString('pt-BR', optionsDate)}/${data.toLocaleDateString('pt-BR', optionsMonth).substr(0,3)}`;
 }
 
-const dataTeste = new Date(2023, 9, 9);
+const dataTeste = new Date(2020,9,5);
 
 console.log(`a) ${funcaoA(dataTeste)}`);
 console.log(`b) ${funcaoB(dataTeste)}`);

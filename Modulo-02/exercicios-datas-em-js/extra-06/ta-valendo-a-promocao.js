@@ -1,15 +1,16 @@
 
-import { startOfDay, endOfDay } from 'date-fns';
+function taValendoAPromocao(inicioDaPromocao, solicitacaoDeUso) {
 
+    let finalDaPromocao = new Date(inicioDaPromocao);
+    finalDaPromocao = finalDaPromocao.setHours(finalDaPromocao.getHours() + 24);
 
-const diaDaSolicitacao = new Date();
+    return +solicitacaoDeUso > +inicioDaPromocao &&
+        +solicitacaoDeUso < +finalDaPromocao
 
-function taValendoAPromocao(diaDaSolicitacao) {
-    const diaPromocao = new Date(2023, 7, 14);
-    return (+diaDaSolicitacao <= startOfDay(+diaPromocao) && +diaDaSolicitacao <= endOfDay(+diaPromocao))
 }
 
-const startOfDayDate = startOfDay(new Date('2023-08-13T12:00:00'));
+const inicioDaPromocao = new Date(2021, 3, 27, 18, 30);
 
+const solicitacaoDeUso = new Date(2021, 3, 28, 18, 29, 59, 999);
 
-console.log(taValendoAPromocao(diaDaSolicitacao))
+console.log(taValendoAPromocao(inicioDaPromocao, solicitacaoDeUso));
