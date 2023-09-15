@@ -8,9 +8,9 @@ create table autores(
 
 create table livros(
 	id serial primary key,
+  id_autor integer references autores(id),
   nome text not null,
   genero text,
   editora text,
-  data_de_publicacao date,
-  id_autor integer references autores(id)
+  data_de_publicacao date
 );

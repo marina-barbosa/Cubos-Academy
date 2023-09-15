@@ -1,11 +1,11 @@
 
 drop database supermercado;
 
-create database supermercado;
+create database ecommerce;
 
 create table categorias (
     id serial primary key,
-    nome text not null
+    nome varchar(50)
 );
 
 insert into categorias (nome) values
@@ -17,11 +17,11 @@ insert into categorias (nome) values
 
 create table produtos (
     id serial primary key,
-    nome text not null,
+    nome varchar(100) not null,
     descricao text,
     preco integer not null,
     quantidade_em_estoque integer not null,
-    categoria_id integer references categorias(id)
+    categoria_id integer not null references categorias(id)
 );
 
 insert into produtos (nome, descricao, preco, quantidade_em_estoque, categoria_id) values 
@@ -45,8 +45,8 @@ insert into produtos (nome, descricao, preco, quantidade_em_estoque, categoria_i
 ('Uva', 'NÃO CONTÉM GLÚTEN.', 420, 90, 1);
 
 create table clientes (
-    cpf text unique,
-    nome text not null
+    cpf char(11) unique primary key,
+    nome varchar(150) not null
 );
 
 insert into clientes (cpf, nome) values
@@ -56,8 +56,8 @@ insert into clientes (cpf, nome) values
 ('75670505018','Maria da Conceição');
 
 create table vendedores (
-    cpf text unique,
-    nome text not null
+    cpf char(11) unique primary key,
+    nome varchar(150) not null
 );
 
 insert into vendedores (cpf, nome) values
@@ -68,34 +68,161 @@ insert into vendedores (cpf, nome) values
 create table pedidos (
     id serial primary key,
     valor integer,
-    cliente_cpf text references clientes(cpf),
-    vendedor_cpf text references vendedores(cpf)
+    cliente_cpf char(11) not null references clientes(cpf),
+    vendedor_cpf char(11) not null references vendedores(cpf)
 );
 
 create table itens_do_pedido (
     id serial primary key,
-    pedido_id integer references pedidos(id),
     quantidade integer not null,
-    produto_id integer references produtos(id)
+    pedido_id integer not null references pedidos(id),
+    produto_id integer not null references produtos(id)
 );
 
 -- alter table pedidos alter column valor drop not null;
 
+-- A)
 insert into pedidos (valor, cliente_cpf, vendedor_cpf) 
-values (0, '80371350042', '28007155023');
+values (9650, '80371350042', '28007155023');
 
-insert into itens_do_pedido (pedido_id, quantidade, produto_id) values
+insert into itens_do_pedido (quantidade, pedido_id, produto_id) values
 (1, 1, 1), 
 (1, 1, 10), 
-(1, 6, 11), 
+(6, 1, 11), 
 (1, 1, 15), 
-(1, 5, 2);     
+(5, 1, 2);     
 
 update produtos set quantidade_em_estoque = quantidade_em_estoque - 1 where id = 1;  
 update produtos set quantidade_em_estoque = quantidade_em_estoque - 1 where id = 10;
 update produtos set quantidade_em_estoque = quantidade_em_estoque - 6 where id = 11; 
 update produtos set quantidade_em_estoque = quantidade_em_estoque - 1 where id = 15; 
 update produtos set quantidade_em_estoque = quantidade_em_estoque - 5 where id = 2;
+
+-- B)
+INSERT INTO pedidos (valor, cliente_cpf, vendedor_cpf) VALUES
+(6460, '63193310034', '23262546003');
+
+INSERT INTO itens_do_pedido (pedido_id, quantidade, produto_id) VALUES
+(2, 10, 17),
+(2, 3, 18),
+(2, 5, 1),
+(2, 10, 5),
+(2, 2, 6);
+
+
+UPDATE produtos
+SET quantidade_em_estoque = 166
+WHERE id = 17;
+
+UPDATE produtos
+SET quantidade_em_estoque = 87
+WHERE id = 18;
+
+UPDATE produtos
+SET quantidade_em_estoque = 117
+WHERE id = 1;
+
+UPDATE produtos
+SET quantidade_em_estoque = 78
+WHERE id = 5;
+
+UPDATE produtos
+SET quantidade_em_estoque = 11
+WHERE id = 6;
+
+
+-- C)
+INSERT INTO pedidos (valor, cliente_cpf, vendedor_cpf) VALUES
+(4120, '75670505018', '23262546003');
+
+INSERT INTO itens_do_pedido (pedido_id, quantidade, produto_id) VALUES
+(3, 1, 13),
+(3, 6, 12),
+(3, 5, 17);
+
+
+UPDATE produtos
+SET quantidade_em_estoque = 29
+WHERE id = 13;
+
+UPDATE produtos
+SET quantidade_em_estoque = 472
+WHERE id = 12;
+
+UPDATE produtos
+SET quantidade_em_estoque = 161
+WHERE id = 17;
+
+-- D)
+
+INSERT INTO pedidos (valor, cliente_cpf, vendedor_cpf) VALUES
+(9370, '75670505018', '82539841031');
+
+INSERT INTO itens_do_pedido (pedido_id, quantidade, produto_id) VALUES
+(4, 1, 16),
+(4, 6, 18),
+(4, 1, 7),
+(4, 3, 1),
+(4, 20, 5),
+(4, 2, 6);
+
+
+UPDATE produtos
+SET quantidade_em_estoque = 54
+WHERE id = 16;
+
+UPDATE produtos
+SET quantidade_em_estoque = 81
+WHERE id = 18;
+
+UPDATE produtos
+SET quantidade_em_estoque = 4
+WHERE id = 7;
+
+UPDATE produtos
+SET quantidade_em_estoque = 114
+WHERE id = 1;
+
+UPDATE produtos
+SET quantidade_em_estoque = 58
+WHERE id = 5;
+
+UPDATE produtos
+SET quantidade_em_estoque = 9
+WHERE id = 6;
+
+-- E)
+
+INSERT INTO pedidos (valor, cliente_cpf, vendedor_cpf) VALUES
+(8229, '67642869061', '82539841031');
+
+INSERT INTO itens_do_pedido (pedido_id, quantidade, produto_id) VALUES
+(5, 8, 18),
+(5, 1, 8),
+(5, 3, 17),
+(5, 8, 5),
+(5, 2, 11);
+
+
+UPDATE produtos
+SET quantidade_em_estoque = 79
+WHERE id = 18;
+
+UPDATE produtos
+SET quantidade_em_estoque = 18
+WHERE id = 8;
+
+UPDATE produtos
+SET quantidade_em_estoque = 163
+WHERE id = 17;
+
+UPDATE produtos
+SET quantidade_em_estoque = 50
+WHERE id = 5;
+
+UPDATE produtos
+SET quantidade_em_estoque = 492
+WHERE id = 11;
 
 
 

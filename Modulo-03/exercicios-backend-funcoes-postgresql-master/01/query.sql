@@ -5,13 +5,13 @@
 -- 3
 -- select max(idade) from usuarios
 -- 4
--- select roound(avg(idade)) from usuarios where idade >= 18
+-- select round(avg(idade)) from usuarios where idade >= 18
 -- 5
--- select sum(estoque) from farmacia where categoria ilike 'blue' or categoria ilike 'black'
+-- select categoria, sum(estoque) from farmacia where categoria ilike 'blue' or categoria ilike 'black' group by categoria;
 -- 6
 -- select categoria, sum(estoque) as quantidade_produto from farmacia where categoria is not null group by categoria
 -- 7
--- select sum(estoque) from farmacia where categoria is null
+-- select categoria, sum(estoque) from farmacia where categoria is null group by categoria
 -- 8
 -- select count(medicamento) from farmacia where categoria is null
 -- 9
@@ -20,6 +20,8 @@
 -- select concat(id, ' - ', medicamento, ' (',coalesce(categoria, 'sem categoria'),')') from farmacia
 -- 11
 -- select nome, idade, cast(cadastro as date) from usuarios where cadastro ilike '2020%'
+-- select nome, idade, cast(cadastro as date) from usuarios
+--where cadastro::date < '2021-01-01' and cadastro::date > '2019-12-31'
 -- 12
 -- select nome, idade, email, age(cast(cadastro as timestamp)) from usuarios where idade < 18
 -- 13
@@ -27,6 +29,6 @@
 -- 14
 -- select categoria, count(estoque) from farmacia where categoria is not null group by categoria 
 -- 15
--- select idade, count(id) from usuarios where idade >= 18 group by idade;
+-- select idade, count(*) from usuarios where idade >= 18 group by idade;
 -- 16
--- select categoria, count(estoque) from farmacia group by categoria
+-- select categoria, sum(estoque) from farmacia group by categoria limit 3;

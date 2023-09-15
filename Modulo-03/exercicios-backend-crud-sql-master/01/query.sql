@@ -1,3 +1,4 @@
+--create database exercicio_crud_sql;
 -- 1
 drop table usuarios;
 create table usuarios (
@@ -16,9 +17,9 @@ values
 ('Elton D. Olsen', 29, 'auctor@duiFuscediam.edu', 'k5X25B0R'),
 ('Shelley E. Frederick', 20, 'raja.feugiat@nonummy.com', 'u2D18F6E');
 -- 3
-update usuarios set nome = ('Raja W. Coffey Thomas') where nome ilike 'Raja W. Coffey';
+update usuarios set nome = ('Raja W. Coffey Thomas') where email = 'raja.feugiat@nonummy.com';
 -- 4
-update usuarios set email = null where id = 5;
+delete from usuarios email i= 'raja.feugiat@nonummy.com';
 alter table usuarios add constraint email_unique_usuarios unique(email);
 -- 5
 insert into usuarios (nome, idade, email, senha)
@@ -30,7 +31,9 @@ values
 ('Elmo K. Greer', 18, 'risus.Duis@eget.ca', 'e3P92I7R');
 -- 6
 alter table usuarios add column situacao boolean default true;
+update usuarios set situacao = false where email = 'montes.nascetur@odiotristique.co.uk';
 -- 7
+update usuario set senha 'k9P31H1O' where email = 'risus.Duis@eget.ca';
 alter table usuarios drop column idade, add column data_nascimento date;
 -- 8
 update usuarios set data_nascimento = '1991-09-29' where email ilike 'auctor@duiFuscediam.edu';
