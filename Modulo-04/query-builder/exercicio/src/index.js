@@ -1,3 +1,8 @@
+require('dotenv').config();
+// require('dotenv').config({
+//     path: './src',
+// });
+
 const express = require('express');
 const rotas = require('./rotas');
 const cors = require('cors');
@@ -8,6 +13,8 @@ app.use(express.json());
 app.use(cors());
 app.use(rotas);
 
-app.listen(3000, () => {
-    console.log('Server ON.');
-});
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+    console.log(`Server ON. Escutando na porta ${port}.`)
+})
