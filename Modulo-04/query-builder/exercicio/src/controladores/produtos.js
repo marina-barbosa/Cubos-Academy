@@ -2,6 +2,7 @@
 
 const knex = require('../conexao.js');
 
+
 const listarProdutos = async (req, res) => {
     const { usuario } = req;
     const { categoria } = req.query;
@@ -9,8 +10,20 @@ const listarProdutos = async (req, res) => {
     try {
 
         if (categoria) {
-            const produtos = await knex('produtos').where('usuario_id', usuario.id).where('categoria', 'ilike', `%${categoria}%`);
+            if (Array.isArray(categoria)) {
+                const produtos = await knex("produtos").where({ usuario_id: usuario.id })
+                    .where((query) => {
+                        categoria.forEach((item) => {
+                            query.orWhere("categoria", "ilike", `%${item.trim()}%`);
+                        });
+                    });
+
+                return res.status(200).json(produtos);
+
+            }
+            const produtos = await knex('produtos').where('usuario_id', usuario.id).where('categoria', 'ilike', `%${categoria}%`).debug();
             return res.status(200).json(produtos);
+
         }
 
         const produtos = await knex('produtos').where('usuario_id', usuario.id);
@@ -21,6 +34,7 @@ const listarProdutos = async (req, res) => {
         return res.status(400).json(error.message);
     }
 }
+
 
 const obterProduto = async (req, res) => {
     const { usuario } = req;
