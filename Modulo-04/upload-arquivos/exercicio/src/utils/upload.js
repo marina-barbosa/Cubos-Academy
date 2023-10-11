@@ -19,8 +19,9 @@ const uploadFile = async (path, buffer, mimetype) => {
     }).promise()
 
     return {
-        url: imagem.Location,
-        path: imagem.Key
+        path: imagem.Key,
+        url: `https://${process.env.BACKBLAZE_BUCKET}.${process.env.ENDPOINT_S3}/${imagem.Key}`
+        //url: imagem.Location,
     }
 }
 
